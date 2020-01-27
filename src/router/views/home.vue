@@ -2,7 +2,6 @@
     import {mapState, mapActions} from "vuex";
 
     import Layout from "../layouts/main";
-    import {required} from "vuelidate/lib/validators";
     import InfiniteLoading from 'vue-infinite-loading';
     import CommentComponent from './comment.component';
 
@@ -16,16 +15,11 @@
                 title: "Messages Board",
                 myAvatar: require('@/assets/images/users/ninja.png'),
                 uknownAvatar: require('@/assets/images/users/uknown.png'),
-                postContent: "",
-                submitted: false,
                 sortOrder: -1,
                 page: 0,
                 infiniteId: +new Date(),
                 isLoading: false
             };
-        },
-        validations: {
-            postContent: {required}
         },
         computed: {
             ...mapState({
@@ -36,27 +30,8 @@
         methods: {
             ...mapActions("posts", {
                 fetchPosts: "fetchPosts",
-                publishPost: "publishPost",
                 emptyCollection: "emptyCollection"
             }),
-            handlePublish() {
-                const shoudCleanCollection = parseInt(this.sortOrder) === 1;
-                this.submitted = true;
-                this.$v.$touch();
-                if (this.$v.$invalid) return;
-                const {postContent} = this;
-                if (shoudCleanCollection) this.sortOrder = -1;
-                this.publishPost({content: postContent, sortOrder: this.sortOrder}).then(() => {
-                    this.submitted = false;
-                    if (shoudCleanCollection) {
-                        this.page = 0;
-                        this.emptyCollection();
-                        this.infiniteId += 1;
-                    }
-                });
-                this.postContent = "";
-
-            },
             incrementInfiniteId() {
                 this.sortOrder = -1;
                 this.page = 0;
