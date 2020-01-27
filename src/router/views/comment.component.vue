@@ -67,8 +67,7 @@
             };
         },
         validations: {
-            postContent: {required},
-            commentContent: {required}
+            postContent: {required}
         },
         computed: {
             ...mapState({
@@ -96,9 +95,6 @@
                 this.postContent = "";
             },
             handleCommentPublish() {
-                this.submitted = true;
-                this.$v.$touch();
-                if (this.$v.$invalid) return;
                 this.publishComment({postId: this.postId, content: this.commentContent})
                 .then((newComment) => {
                     this.comments.push(newComment);
