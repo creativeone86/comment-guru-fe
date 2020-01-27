@@ -1,6 +1,5 @@
 <script>
     import {mapState, mapActions} from "vuex";
-
     import Layout from "../layouts/main";
     import InfiniteLoading from 'vue-infinite-loading';
     import CommentComponent from './comment.component';
