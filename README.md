@@ -7,7 +7,7 @@ npm i
 
 ### Compiles and hot-reloads for development
 ```
-// server on http://localhost:8080 and talks to the server @:3000
+// client server on http://localhost:8080 and talks to the BE server @:3000
 npm run serve
 ```
 
