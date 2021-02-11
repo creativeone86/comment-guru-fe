@@ -18,7 +18,7 @@
     "@fullcalendar/timegrid": "^4.3.0",
     "@fullcalendar/vue": "^4.3.1",
     "@toast-ui/vue-chart": "^1.1.2",
-    "apexcharts": "^3.12.0",
+    "apexcharts": "^3.24.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.1.0",
